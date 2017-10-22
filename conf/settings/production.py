@@ -5,6 +5,8 @@ import raven
 import dj_database_url
 
 BASE = os.path.abspath(os.path.dirname(__file__))
+PROJECT_ROOT = os.path.dirname(os.path.join('..', '..', os.path.abspath(__file__)))
+
 DEBUG = 'DEBUG' in os.environ
 TEMPLATE_DEBUG = DEBUG
 
@@ -25,9 +27,7 @@ BASE_URL = "https://in_app_purchase_receipt_verifier.herokuapp.com"
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE, "templates"),
-        ],
+        'DIRS': [],
         'OPTIONS': {
             'loaders': (
                 'django.template.loaders.filesystem.Loader',

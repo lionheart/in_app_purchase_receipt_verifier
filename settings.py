@@ -27,9 +27,8 @@ STATIC_ROOT = os.path.join(BASE, "collected")
 SECRET_KEY = 't6$-h0*l7f)n)#-$u%oqwv+9kg@z5vhlhy+bsg8#4&npsh2s6e'
 
 ALLOWED_HOSTS = [
-    ".herokuapp.com",
-    "local.in_app_purchase_receipt_verifier.com",
-    "in_app_purchase_receipt_verifier.com"
+    "localhost",
+    "iap_receipt_verifier.herokuapp.com",
 ]
 
 MIDDLEWARE_CLASSES = (
@@ -202,6 +201,14 @@ AWS_HEADERS = {
 
 # django-statictastic querystring support
 COMMIT_SHA = ""
+
+APP_SPECIFIC_SHARED_SECRET = os.environ.get("APP_SPECIFIC_SHARED_SECRET")
+RECEIPT_VERIFICATION_ENVIRONMENT = os.environ.get("RECEIPT_VERIFICATION_ENVIRONMENT")
+
+if RECEIPT_VERIFICATION_ENVIRONMENT == "production":
+    RECEIPT_VERIFICATION_URL = "https://buy.itunes.apple.com/verifyReceipt"
+else:
+    RECEIPT_VERIFICATION_URL = "https://sandbox.itunes.apple.com/verifyReceipt"
 
 settings_path = lambda env: os.path.join(BASE, 'conf', 'settings', '{}.py'.format(env))
 

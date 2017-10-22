@@ -1,12 +1,21 @@
+import json
 import logging
 
+from django.conf import settings
 from django.shortcuts import get_object_or_404
 
-from lionheart.decorators import render
+from lionheart.decorators import render_json
+import requests
 
 logger = logging.getLogger(__name__)
 
-@render
-def home(request):
-    return {}
+@render_json
+def verify_receipt(request):
+    data = {
+        'receipt-data': request.body,
+        'password': settings.APP_SPECIFIC_SHARED_SECRET
+    }
+    response = requests.post(settings.RECEIPT_VERIFICATION_URL, data=json.dumps(data))
+    payload = response.json()
+    return payload
 

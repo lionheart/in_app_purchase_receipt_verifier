@@ -8,3 +8,6 @@ local_settings.py
 .Python
 pip-selfcheck.json
 collected/
+app/receipt.py
+*.map
+*.envrc
