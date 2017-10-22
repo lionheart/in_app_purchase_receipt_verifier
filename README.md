@@ -17,7 +17,7 @@ A simple, one-click deploy web app to simplify the process of validating In-App 
     }
 
     let encodedData = data.base64EncodedData(options: [])
-    let url = URL(string: "http://your-app.herokuapp.com/verify")!
+    let url = URL(string: "https://your-app.herokuapp.com/verify")!
 
     var request = URLRequest(url: url)
     request.httpBody = encodedData
