@@ -28,7 +28,7 @@ SECRET_KEY = 't6$-h0*l7f)n)#-$u%oqwv+9kg@z5vhlhy+bsg8#4&npsh2s6e'
 
 ALLOWED_HOSTS = [
     "localhost",
-    "iap_receipt_verifier.herokuapp.com",
+    ".herokuapp.com",
 ]
 
 MIDDLEWARE_CLASSES = (
