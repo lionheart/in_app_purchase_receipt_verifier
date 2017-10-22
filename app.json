@@ -15,6 +15,7 @@
     },
     "SECRET_KEY": {
       "description": "This should be set to a unique, unpredictable value.",
+      "required": true,
       "generator": "secret"
     },
   },
