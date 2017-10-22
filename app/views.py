@@ -17,6 +17,7 @@ def verify_receipt(request):
         'receipt-data': request.body.strip().decode("utf-8"),
         'password': settings.APP_SPECIFIC_SHARED_SECRET
     }
+    print(data['receipt-data'])
     response = requests.post(settings.RECEIPT_VERIFICATION_URL, data=json.dumps(data))
     payload = response.json()
     return payload
