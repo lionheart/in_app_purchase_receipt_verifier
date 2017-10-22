@@ -1,6 +1,6 @@
-# In-App Purchase Receipt Verifier
-
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+# In-App Purchase Receipt Verifier
 
 A simple, one-click deploy web app to simplify the process of validating In-App Purchase receipts on the App Store.
 
