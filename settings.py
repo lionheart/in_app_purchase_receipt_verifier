@@ -68,7 +68,7 @@ INSTALLED_APPS = (
     # 'django_object_actions',
     # 'sorl.thumbnail',
     # 'djcelery',
-    # 'raven.contrib.django.raven_compat',
+    'raven.contrib.django.raven_compat',
 )
 
 LOGGING = {

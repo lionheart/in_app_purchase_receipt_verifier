@@ -12,7 +12,7 @@ boto==2.46.1
 django-ses
 
 # Misc
-raven==6.0.0
+raven
 django-cachalot==1.4.1
 
 # Thumbnailing
