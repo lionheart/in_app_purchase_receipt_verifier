@@ -8,7 +8,6 @@ BASE = os.path.abspath(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.join('..', '..', os.path.abspath(__file__)))
 
 DEBUG = 'DEBUG' in os.environ
-TEMPLATE_DEBUG = DEBUG
 
 DATABASES = {'default': dj_database_url.config()}
 
@@ -26,6 +25,7 @@ BASE_URL = "https://in_app_purchase_receipt_verifier.herokuapp.com"
 
 TEMPLATES = [
     {
+        'DEBUG': DEBUG,
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [],
         'OPTIONS': {
