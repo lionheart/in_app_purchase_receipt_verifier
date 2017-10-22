@@ -14,7 +14,7 @@ logger = logging.getLogger(__name__)
 @csrf_exempt
 def verify_receipt(request):
     data = {
-        'receipt-data': request.body.encode("utf-8"),
+        'receipt-data': request.body.strip().decode("utf-8"),
         'password': settings.APP_SPECIFIC_SHARED_SECRET
     }
     response = requests.post(settings.RECEIPT_VERIFICATION_URL, data=json.dumps(data))

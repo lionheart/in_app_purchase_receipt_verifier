@@ -12,3 +12,4 @@ app/receipt.py
 receipt
 *.map
 *.envrc
+output.html
