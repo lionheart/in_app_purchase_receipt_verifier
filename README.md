@@ -2,7 +2,7 @@
 
 # In-App Purchase Receipt Verifier
 
-A simple, one-click deploy web app to simplify the process of validating In-App Purchase receipts on the App Store. Written using Django 1.11 and Python 3.6.2.
+A simple, one-click deploy web app to simplify [the process of validating In-App Purchase receipts on the App Store](https://developer.apple.com/library/content/releasenotes/General/ValidateAppStoreReceipt/Chapters/ValidateRemotely.html#//apple_ref/doc/uid/TP40010573-CH104-SW1). Written using Django 1.11 and Python 3.6.2.
 
 ## Usage
 
