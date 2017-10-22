@@ -6,9 +6,9 @@ A simple, one-click deploy web app to simplify the process of validating In-App 
 
 ## Usage
 
-1. Create the project on [Heroku](https://heroku.com), making sure that you've already obtained an app-specific shared secret for authentication.
+1. Create the project on [Heroku](https://heroku.com) using the Deploy Button above. Before you do, make sure that you've already obtained an app-specific shared secret for authentication on iTunes Connect.
 
-2. Use something like the following in your iOS app to verify your receipts.
+2. Use something like the following in your iOS app to validate your receipts.
 
     ```swift
     guard let receiptURL = Bundle.main.appStoreReceiptURL,
