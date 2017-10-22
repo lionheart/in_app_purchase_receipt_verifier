@@ -1,6 +1,10 @@
-For information on how to use this project template, check out the [wiki](https://github.com/lionheart/django-template/wiki/Django-1.11-Heroku).
+# In-App Purchase Receipt Verifier
 
-# in_app_purchase_receipt_verifier
+### Testing
+
+```
+curl -X POST -T receipt https://iap-receipt-verifier.herokuapp.com/verify
+```
 
 ### Table of Contents
 
