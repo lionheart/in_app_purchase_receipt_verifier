@@ -1,7 +1,7 @@
 {
   "name": "IAP Receipt Verifier",
   "description": "A web app to verify App Store purchase receipts.",
-  "repository": "https://github.com/dlo/in_app_purchase_receipt_verifier",
+  "repository": "https://github.com/lionheart/in_app_purchase_receipt_verifier",
   "keywords": ["python", "django", "app store"],
   "env": {
     "RECEIPT_VERIFICATION_ENVIRONMENT": {
