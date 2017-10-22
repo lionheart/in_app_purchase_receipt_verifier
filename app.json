@@ -1,5 +1,5 @@
 {
-  "name": "IAP Receipt Verifier",
+  "name": "In-App Purchase Receipt Verifier",
   "description": "A web app to verify App Store purchase receipts.",
   "repository": "https://github.com/dlo/in_app_purchase_receipt_verifier",
   "keywords": ["python", "django", "app store"],
@@ -10,7 +10,7 @@
       "required": true
     },
     "APP_SPECIFIC_SHARED_SECRET": {
-      "description": "The shared secret for your app.",
+      "description": "Your app's shared secret (a hexadecimal string).",
       "required": true
     }
   },
