@@ -12,7 +12,11 @@
     "APP_SPECIFIC_SHARED_SECRET": {
       "description": "Your app's shared secret (a hexadecimal string).",
       "required": true
-    }
+    },
+    "SECRET_KEY": {
+      "description": "A secret key for a particular Django installation. This is used to provide cryptographic signing, and should be set to a unique, unpredictable value.",
+      "generator": "secret"
+    },
   },
   "formation": {
     "web": {

@@ -24,7 +24,7 @@ USE_TZ = True
 STATICFILES_DIRS = (os.path.join(BASE, "in_app_purchase_receipt_verifier", "static"),)
 STATIC_ROOT = os.path.join(BASE, "collected")
 
-SECRET_KEY = 't6$-h0*l7f)n)#-$u%oqwv+9kg@z5vhlhy+bsg8#4&npsh2s6e'
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 ALLOWED_HOSTS = [
     "localhost",
