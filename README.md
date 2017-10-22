@@ -45,3 +45,7 @@ curl -X POST -T receipt https://your-app.herokuapp.com/verify
 
 ...where `receipt` is a file with base-64 encoded receipt data.
 
+## License
+
+In-App Purchase Receipt Verifier is available under the Apache 2.0 license. See the [LICENSE](LICENSE) file for more info.
+
