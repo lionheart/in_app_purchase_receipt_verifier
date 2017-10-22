@@ -2,90 +2,44 @@
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
-### Testing
+## Usage
+
+1. Create the project on [Heroku](https://heroku.com), making sure that you've already obtained an app-specific shared secret for authentication.
+
+2. Use something like the following code in your iOS app to verify receipts.
+
+    ```swift
+    guard let receiptURL = Bundle.main.appStoreReceiptURL,
+        let data = try? Data(contentsOf: receiptURL) else {
+          return
+    }
+
+    let encodedData = data.base64EncodedData(options: [])
+    let url = URL(string: "http://your-app.herokuapp.com/verify")!
+
+    var request = URLRequest(url: url)
+    request.httpBody = encodedData
+    request.httpMethod = "POST"
+
+    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+        guard let data = data,
+            let object = try? JSONSerialization.jsonObject(with: data, options: []),
+            let json = object as? [String: Any] else {
+                return
+        }
+
+        // Your application logic here.
+    }
+    task.resume()
+    ```
+
+3. Yep, that's it. There's no step 3!
+
+## Local Testing
 
 ```
-curl -X POST -T receipt https://iap-receipt-verifier.herokuapp.com/verify
+curl -X POST -T receipt https://your-app.herokuapp.com/verify
 ```
 
-### Table of Contents
+...where `receipt` is a file with base-64 encoded receipt data.
 
-* [Requirements](#requirements)
-* [Local Setup](#local-setup)
-* [Local Development](#local-development)
-* [Deployment](#deployment)
-* [Provisioning](#server-provisioning)
-
-### Requirements
-
-* [Homebrew](https://brew.sh) (not quite a "requirement" but recommended)
-
-        $ /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-
-* [Python 3](https://www.python.org/downloads/release/python-361/)
-
-        $ brew install python3
-
-* [pip](https://pip.pypa.io/en/stable/) (should come bundled when installing Python 3 via Homebrew)
-
-* PostgreSQL
-
-        $ brew install postgresql
-
-    If you're in the mood for a longer read or have run into issues, here's a good [article](https://www.codefellows.org/blog/three-battle-tested-ways-to-install-postgresql) on how to install PostgreSQL on your system (covers Mac OS X, Windows, and Ubuntu).
-
-## Local Development
-
-1. Run the initialization script. This will set up your local Python virtual environment, install all requirements, link local settings, initialize the local development database, and run all migrations.
-
-        $ ./scripts/init.sh
-
-2. Set up the Git hooks (optional).
-
-        $ git_config/configure.sh
-
-3. Start the local development server and Sass.
-
-        (in_app_purchase_receipt_verifier) $ PYTHONUNBUFFERED=True foreman start -f Procfile.dev
-
-Map "local.in_app_purchase_receipt_verifier.com" to 127.0.0.0 using DNS. If you haven't yet registered a domain, add the following line to your `/etc/hosts` file.
-
-    127.0.0.1 local.in_app_purchase_receipt_verifier.com
-
-After you've done that, open your browser and navigate to "[local.in_app_purchase_receipt_verifier.com](http://local.in_app_purchase_receipt_verifier.com)". Your project is now running!
-
-Heroku Setup
-------------
-
-1. Create the project on [Heroku](https://heroku.com) or connect it to an existing project.
-
-       heroku git:remote -a HEROKU-PROJECT-NAME
-
-   Or:
-
-       heroku create
-
-2. Add the PostgreSQL addon.
-
-       heroku addons:create heroku-postgresql
-
-3. Specify that the project uses the Python buildpack.
-
-       heroku buildpacks:set heroku/python
-
-4. Set the environment variables.
-
-       heroku config:set APP_ENVIRONMENT=production
-       heroku config:set AWS_ACCESS_KEY_ID=XXX
-       heroku config:set AWS_SECRET_ACCESS_KEY=XXX
-       heroku config:set AWS_STORAGE_BUCKET_NAME=XXX
-       heroku config:set DISABLE_COLLECTSTATIC=1
-
-PostgreSQL Installation
------------------------
-
-If you're on a Mac and have [Homebrew](https://github.com/homebrew/homebrew) installed, we'll keep it simple.
-
-    brew install postgresql
-
-If you're in the mood for a longer read or have run into issues, here's a good [article](https://www.codefellows.org/blog/three-battle-tested-ways-to-install-postgresql) on how to install PostgreSQL on your system (covers Mac OS X, Windows, and Ubuntu).
