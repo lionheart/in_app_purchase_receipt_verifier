@@ -9,5 +9,6 @@ local_settings.py
 pip-selfcheck.json
 collected/
 app/receipt.py
+receipt
 *.map
 *.envrc

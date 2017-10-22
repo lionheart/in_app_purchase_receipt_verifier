@@ -3,6 +3,7 @@ import logging
 
 from django.conf import settings
 from django.shortcuts import get_object_or_404
+from django.views.decorators.csrf import csrf_exempt
 
 from lionheart.decorators import render_json
 import requests
@@ -10,6 +11,7 @@ import requests
 logger = logging.getLogger(__name__)
 
 @render_json
+@csrf_exempt
 def verify_receipt(request):
     data = {
         'receipt-data': request.body,
