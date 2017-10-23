@@ -15,10 +15,6 @@ django-ses
 raven
 django-cachalot==1.4.1
 
-# Thumbnailing
-sorl-thumbnail==12.4a1
-
-django-redis-sessions-fork==0.7.0
 django-lionheart-helpers==3.0.0
 django-statictastic==3.0.1
 
@@ -28,10 +24,6 @@ gunicorn==19.7.1
 # Heroku-specific
 dj-database-url
 
-# Mandrill
-# djrill==2.0
-# Avoids SSL error on connecting to Mandrill's API
-# certifi==2015.04.28
 foreman==0.9.7
 rerun==1.0.28
 gevent
