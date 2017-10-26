@@ -3,13 +3,16 @@
  This playground contains helper methods to quickly generate a valid 2048-bit RSA key. The web app will use this key to sign the data it sends back to your app, and your app will use the public key to verify that the data has not been tampered with.
  */
 import UIKit
-//: First, generate a private key using the helper initializer in `Helpers.swift`. Copy the value of `privateKeyString` into the Heroku Deploy field for `B64_ENCODED_SIGNING_KEY`.
 let privateKey = try! Key()
+
+// Copy the value of `privateKeyString` into the Heroku Deploy field for `B64_ENCODED_SIGNING_KEY`.
 let privateKeyString = (try! Data(key: privateKey)).base64EncodedString()
 print(privateKeyString)
-//: Now, derive the public key. Use this value in your iOS app to verify that the payload from the web app is valid.
+
+// Derive the public key. Use this value in your iOS app to verify that the payload from the web app is valid.
 let publicKeyString = (try! Data(key: privateKey.publicKey!)).base64EncodedString()
 print(publicKeyString)
+
 //: Here's an example for how you might validate the signature in your app.
 //let publicKeyString = "MIIBCgKCAQEArZCqOKSEUyeOF//WL+61slkwlAqjFQ++g2kX2LS08e1F/ZFyhU7AzBSR1TLxjg/Nl9a1JjaAbboYFXtdL4cxE+6UE41VxWMZ+fk3jVeFVGaqEXZy6zaPJ9Kr4g5mQyce0JCh24GQTeTz7HDahfny0trQOxajgYhG0WfpSXDqosvH7e1mtIkfz5euS29FfW5aXVslfs2heQTVmh9EbDy/cn4uf5b0gkN4w+oMj7AHK8mwwQMYjTNF9bHJxgRjWE0eUwi6JbvX8/n6ZAB2AvDc0gg0URfM00rEDc+0rTZ7ArncBGTSU8yHrhrNZ31PmcAgoHMk7OtrB25dFFXILIBKgwIDAQAB"
 let key: Key = try! Key(base64EncodedString: publicKeyString, keyClass: .public)
