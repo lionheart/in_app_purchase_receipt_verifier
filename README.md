@@ -10,12 +10,16 @@ A simple, one-click deploy web app to simplify [the process of validating In-App
 
 2. Create the project on [Heroku](https://heroku.com) using the Deploy Button above. Before you do, make sure that you've already obtained an app-specific shared secret for authentication on iTunes Connect.
 
+3. Add `IAPReceiptVerifier` to your Podfile, run `pod update` and do the following to verify the receipt.
+
+
 3. Use something like the following in your iOS app to validate your receipts.
 
     ```swift
-    guard let receiptURL = Bundle.main.appStoreReceiptURL,
+    guard let verifier = IAPReceiptVerifier(base64EncodedPublicKey: _publicKey),
+        let receiptURL = Bundle.main.appStoreReceiptURL,
         let data = try? Data(contentsOf: receiptURL) else {
-          return
+            return
     }
 
     let encodedData = data.base64EncodedData(options: [])
@@ -27,8 +31,12 @@ A simple, one-click deploy web app to simplify [the process of validating In-App
 
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
         guard let data = data,
+            let HTTPResponse = response as? HTTPURLResponse,
             let object = try? JSONSerialization.jsonObject(with: data, options: []),
-            let json = object as? [String: Any] else {
+            let json = object as? [String: Any],
+            let signatureString = HTTPResponse.allHeaderFields["X-Signature"] as? NSString,
+            let signatureData = signatureString.data(using: String.Encoding.utf8.rawValue),
+            verifier.verify(data: data, signature: signatureData) else {
                 return
         }
 
