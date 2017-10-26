@@ -28,3 +28,4 @@ foreman==0.9.7
 rerun==1.0.28
 gevent
 requests
+pycrypto
