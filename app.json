@@ -10,7 +10,7 @@
       "required": true
     },
     "APP_SPECIFIC_SHARED_SECRET": {
-      "description": "Your app's shared secret (a hexadecimal string).",
+      "description": "Your app's shared secret from iTunes Connect (a hexadecimal string).",
       "required": true
     },
     "SECRET_KEY": {
@@ -18,8 +18,8 @@
       "required": true,
       "generator": "secret"
     },
-    "B64_ENCODED_SIGNING_KEY": {
-      "description": "Optional. See README for information on what to provide in this value.",
+    "BASE64_ENCODED_SIGNING_KEY": {
+      "description": "Optional. See README for information on what to provide for this value.",
       "required": false
     }
   },
