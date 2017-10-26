@@ -20,7 +20,7 @@
     },
     "B64_ENCODED_SIGNING_KEY": {
       "description": "Optional. See README for information on what to provide in this value.",
-      "required": false,
+      "required": false
     }
   },
   "formation": {
