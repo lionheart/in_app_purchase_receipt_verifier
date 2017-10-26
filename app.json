@@ -17,6 +17,10 @@
       "description": "This should be set to a unique, unpredictable value.",
       "required": true,
       "generator": "secret"
+    },
+    "B64_ENCODED_SIGNING_KEY": {
+      "description": "Optional. See README for information on what to provide in this value.",
+      "required": false,
     }
   },
   "formation": {
