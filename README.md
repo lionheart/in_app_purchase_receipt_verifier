@@ -6,9 +6,11 @@ A simple, one-click deploy web app to simplify [the process of validating In-App
 
 ## Usage
 
-1. Create the project on [Heroku](https://heroku.com) using the Deploy Button above. Before you do, make sure that you've already obtained an app-specific shared secret for authentication on iTunes Connect.
+1. [Optional] Generate a private/public RSA key pair using [IAPVerifierKeyGenerator.playground](IAPVerifierKeyGenerator.playground). Save the Base-64 encoded values for these keys for step 2.
 
-2. Use something like the following in your iOS app to validate your receipts.
+2. Create the project on [Heroku](https://heroku.com) using the Deploy Button above. Before you do, make sure that you've already obtained an app-specific shared secret for authentication on iTunes Connect.
+
+3. Use something like the following in your iOS app to validate your receipts.
 
     ```swift
     guard let receiptURL = Bundle.main.appStoreReceiptURL,
@@ -34,8 +36,6 @@ A simple, one-click deploy web app to simplify [the process of validating In-App
     }
     task.resume()
     ```
-
-3. Yep, that's it. There's no step 3!
 
 ## Local Testing
 
