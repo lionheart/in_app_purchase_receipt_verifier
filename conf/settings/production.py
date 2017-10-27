@@ -54,8 +54,6 @@ DEFAULT_FILE_STORAGE = 'django.core.files.storage.FileSystemStorage'
 STATICFILES_STORAGE = 'statictastic.backends.VersionedFileSystemStorage'
 
 RAVEN_CONFIG = {
-    'dsn': 'https://970c85a7364c42518173841479dd10c9:e640442a54334aa096630088fbfdea97@sentry.io/233717',
-    # If you are using git, you can also automatically configure the
-    # release based on the git info.
+    'dsn': os.environ.get("SENTRY_DSN"),
 }
 
