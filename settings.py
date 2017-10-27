@@ -59,15 +59,8 @@ INSTALLED_APPS = (
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
-    'django.contrib.sites',
-    'django.contrib.messages',
-    'django.contrib.admin',
     'django.contrib.staticfiles',
     'app',
-    'statictastic',
-    # 'django_object_actions',
-    # 'sorl.thumbnail',
-    # 'djcelery',
     'raven.contrib.django.raven_compat',
 )
 
