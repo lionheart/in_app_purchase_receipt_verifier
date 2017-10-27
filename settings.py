@@ -216,13 +216,9 @@ settings_path = lambda env: os.path.join(BASE, 'conf', 'settings', '{}.py'.forma
 try:
     from local_settings import *
 except ImportError:
-    try:
-        environment = os.environ['APP_ENVIRONMENT']
-    except KeyError:
-        raise Exception("""Please set your app environment (APP_ENVIRONMENT).""")
-    else:
-        config = imp.load_source('local_settings', settings_path(environment))
-        from local_settings import *
+    environment = os.environ.get('APP_ENVIRONMENT', 'production')
+    config = imp.load_source('local_settings', settings_path(environment))
+    from local_settings import *
 
 # Uncomment if using django-celery
 # try:
