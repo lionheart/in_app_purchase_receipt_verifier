@@ -13,6 +13,11 @@
       "description": "Your app's shared secret from iTunes Connect (a hexadecimal string).",
       "required": true
     },
+    "DISABLE_COLLECTSTATIC": {
+      "description": "Must set this to 1. Don't edit this value.",
+      "value": "1",
+      "required": true
+    },
     "SECRET_KEY": {
       "description": "This should be set to a unique, unpredictable value.",
       "required": true,
