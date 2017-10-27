@@ -6,14 +6,19 @@ A simple, one-click deploy web app to simplify [the process of validating In-App
 
 ## Usage
 
-1. [Optional] Generate a private/public RSA key pair using [IAPVerifierKeyGenerator.playground](IAPVerifierKeyGenerator.playground). Save the Base-64 encoded values for these keys for step 2.
+### Deployment
 
-2. Create the project on [Heroku](https://heroku.com) using the Deploy Button above. Before you do, make sure that you've already obtained an app-specific shared secret for authentication on iTunes Connect.
+1. (Optional, but highly recommended) Download [IAPVerifierKeyGenerator.playground](IAPVerifierKeyGenerator.playground) and run the playground. Copy the highlighted Base-64 encoded values below. Save these values for the next steps.
 
-3. Add `IAPReceiptVerifier` to your Podfile, run `pod update` and do the following to verify the receipt.
+   ![playground1.png]()
 
+2. Create the project on [Heroku](https://heroku.com) using the Deploy Button above. Before you do, make sure that you've already obtained your app-specific shared secret for authentication from iTunes Connect. For the `BASE64_ENCODED_SIGNING_KEY` value, paste in the value for the private key from Step 1.
 
-3. Use something like the following in your iOS app to validate your receipts.
+### In Your iOS App
+
+1. Add `IAPReceiptVerifier` to your Podfile, then run `pod update`.
+
+2. Use something like the following in your iOS app to validate your receipts.
 
     ```swift
     guard let verifier = IAPReceiptVerifier(base64EncodedPublicKey: _publicKey),
