@@ -19,7 +19,7 @@
     },
     "SENTRY_DSN": {
       "description": "Optional. Your application's Sentry DSN, if application (e.g., 'https://123456:12345@sentry.io/123456'). This is used for error reporting. If you don't know what this is, you can ignore it.",
-      "required": false,
+      "required": false
     },
     "SECRET_KEY": {
       "description": "This should be set to a unique, unpredictable value.",
