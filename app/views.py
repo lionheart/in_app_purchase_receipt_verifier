@@ -28,8 +28,8 @@ def verify_receipt(request):
     response = JSONResponse(payload)
 
     # If signing key is available, sign the payload to detect potential tampering.
-    if settings.B64_ENCODED_SIGNING_KEY:
-        key_data = base64.b64decode(settings.B64_ENCODED_SIGNING_KEY)
+    if settings.BASE64_ENCODED_SIGNING_KEY:
+        key_data = base64.b64decode(settings.BASE64_ENCODED_SIGNING_KEY)
         key = RSA.importKey(key_data)
 
         data = json.dumps(payload).encode("utf8")
