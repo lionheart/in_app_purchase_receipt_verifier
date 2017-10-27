@@ -21,18 +21,18 @@ A simple, one-click deploy web app to simplify [the process of validating In-App
 2. Use something like the following in your iOS app to validate your receipts.
 
     ```swift
-    # Insert your Heroku app URL here.
+    // Insert your Heroku app URL here.
     let url = URL(string: "https://your-app-name.herokuapp.com/verify")!
 
-    # The Base 64 Encoded public key from Step 1.
+    // The Base 64 Encoded public key from Step 1.
     let publicKey = "..."
 
-    # Create the receipt verifier from the above values.
+    // Create the receipt verifier from the above values.
     guard let verifier = IAPReceiptVerifier(url: url, base64EncodedPublicKey: publicKey) else {
         return
     }
 
-    # Check the app store to see if there is a valid receipt.
+    // Check the app store to see if there is a valid receipt.
     verifier.verify { receipt in
         guard let receipt = receipt else {
             // Someone tampered with the payload!
