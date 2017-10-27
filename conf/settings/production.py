@@ -2,14 +2,18 @@
 
 import os
 import raven
-import dj_database_url
 
 BASE = os.path.abspath(os.path.dirname(__file__))
 PROJECT_ROOT = os.path.dirname(os.path.join('..', '..', os.path.abspath(__file__)))
 
 DEBUG = 'DEBUG' in os.environ
 
-DATABASES = {'default': dj_database_url.config()}
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': "production.sqlite"
+    }
+}
 
 CACHES = {
     'default': {
