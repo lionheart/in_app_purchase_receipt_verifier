@@ -21,33 +21,26 @@ A simple, one-click deploy web app to simplify [the process of validating In-App
 2. Use something like the following in your iOS app to validate your receipts.
 
     ```swift
-    guard let verifier = IAPReceiptVerifier(base64EncodedPublicKey: _publicKey),
-        let receiptURL = Bundle.main.appStoreReceiptURL,
-        let data = try? Data(contentsOf: receiptURL) else {
-            return
+    # Insert your Heroku app URL here.
+    let url = URL(string: "https://your-app-name.herokuapp.com/verify")!
+
+    # The Base 64 Encoded public key from Step 1.
+    let publicKey = "..."
+
+    # Create the receipt verifier from the above values.
+    guard let verifier = IAPReceiptVerifier(url: url, base64EncodedPublicKey: publicKey) else {
+        return
     }
 
-    let encodedData = data.base64EncodedData(options: [])
-    let url = URL(string: "https://your-app.herokuapp.com/verify")!
-
-    var request = URLRequest(url: url)
-    request.httpBody = encodedData
-    request.httpMethod = "POST"
-
-    let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
-        guard let data = data,
-            let HTTPResponse = response as? HTTPURLResponse,
-            let object = try? JSONSerialization.jsonObject(with: data, options: []),
-            let json = object as? [String: Any],
-            let signatureString = HTTPResponse.allHeaderFields["X-Signature"] as? NSString,
-            let signatureData = signatureString.data(using: String.Encoding.utf8.rawValue),
-            verifier.verify(data: data, signature: signatureData) else {
-                return
+    # Check the app store to see if there is a valid receipt.
+    verifier.verify { receipt in
+        guard let receipt = receipt else {
+            // Someone tampered with the payload!
+            return
         }
 
         // Your application logic here.
     }
-    task.resume()
     ```
 
 ## Local Testing
