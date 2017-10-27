@@ -13,19 +13,23 @@
       "description": "Your app's shared secret from iTunes Connect (a hexadecimal string).",
       "required": true
     },
-    "DISABLE_COLLECTSTATIC": {
-      "description": "Must set this to 1. Don't edit this value.",
-      "value": "1",
-      "required": true
+    "BASE64_ENCODED_SIGNING_KEY": {
+      "description": "Optional, but required if you'd like to verify payloads end-to-end. See README for information on what to provide for this value.",
+      "required": false
+    },
+    "SENTRY_DSN": {
+      "description": "Optional. Your application's Sentry DSN, if application (e.g., 'https://123456:12345@sentry.io/123456'). This is used for error reporting. If you don't know what this is, you can ignore it.",
+      "required": false,
     },
     "SECRET_KEY": {
       "description": "This should be set to a unique, unpredictable value.",
       "required": true,
       "generator": "secret"
     },
-    "BASE64_ENCODED_SIGNING_KEY": {
-      "description": "Optional. See README for information on what to provide for this value.",
-      "required": false
+    "DISABLE_COLLECTSTATIC": {
+      "description": "Must set this to 1. Don't edit this value.",
+      "value": "1",
+      "required": true
     }
   },
   "formation": {
