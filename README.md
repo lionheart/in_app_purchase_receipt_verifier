@@ -15,6 +15,7 @@ limitations under the License.
 -->
 
 ![](meta/repo-banner.png)
+[![](meta/repo-banner-bottom.png)][lionheart-url]
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
 
@@ -70,4 +71,6 @@ curl -X POST -T receipt https://your-app.herokuapp.com/verify
 ## License
 
 In-App Purchase Receipt Verifier is available under the Apache 2.0 license. See the [LICENSE](LICENSE) file for more info.
+
+[lionheart-url]: https://lionheartsw.com/
 
