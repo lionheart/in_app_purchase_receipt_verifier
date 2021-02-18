@@ -1,4 +1,4 @@
-django==1.11.5
+django==1.11.29
 
 # See https://docs.djangoproject.com/en/1.11/topics/auth/passwords/#using-argon2-with-django
 django[argon2]
